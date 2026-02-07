@@ -1,9 +1,9 @@
 const DB_KEYS = {
-    USERS: 'db_users5',
-    NEWS: 'db_news5',
-    REPORTERS: 'db_reporters5',
-    REPORTS: 'db_reports5',
-    CURRENT_USER: 'db_current_user5'
+    USERS: 'db_users10',
+    NEWS: 'db_news10',
+    REPORTERS: 'db_reporters10',
+    REPORTS: 'db_reports10',
+    CURRENT_USER: 'db_current_user10'
 };
 
 function initData() {
@@ -268,13 +268,18 @@ function addReport() {
     if (targetNews) {
         if (targetNews.status !== 'ยังไม่ตรวจสอบ') {
             alert(`ไม่สามารถรายงานข่าวนี้ได้ เนื่องจากถูกตรวจสอบแล้วว่าเป็น "${targetNews.status}"`);
+            return;
         }
     } else {
         alert('ไม่พบข่าวดังกล่าวในระบบ');
         return;
     }
-
     const reports = loadData(DB_KEYS.REPORTS);
+    const isDuplicate = reports.some(r => r.reporterId === reporterId && r.newsId == newsId);
+    if (isDuplicate) {
+        alert(`นักข่าวรหัส ${reporterId} ได้เคยรายงานข่าวนี้ไปแล้ว ไม่สามารถรายงานซ้ำได้`);
+    }
+
     const newReport = {
         reporterId: reporterId,
         newsId: newsId,
