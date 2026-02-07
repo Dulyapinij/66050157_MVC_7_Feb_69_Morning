@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจัดการข่าว (Admin)</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Admin Dashboard</h1>
+        <button onclick="logout()" style="background: red;">ออกจากระบบ</button>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>เพิ่มหัวข้อข่าว</h2>
+            <form id="newsForm" onsubmit="event.preventDefault(); addNews();">
+                <label>หัวข้อข่าว:</label>
+                <input type="text" id="topic" required>
+                
+                <label>รายละเอียดข่าว:</label>
+                <textarea id="detail" required></textarea>
+                
+                <label>แหล่งที่มา:</label>
+                <input type="text" id="source" required>
+                
+                <label>วันที่สร้างข่าว:</label>
+                <input type="date" id="newsDate" required>
+                
+                <label>คะแนนความน่าเชื่อถือ (1-10):</label>
+                <input type="number" id="trustScore" min="1" max="10" value="5">
+                
+                <button type="submit">สร้างข่าว</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>ตรวจสอบสถานะข่าว</h2>
+            <label>เลือกข่าว:</label>
+            <select id="statusNewsId"></select>
+            
+            <label>เปลี่ยนสถานะเป็น:</label>
+            <select id="newStatus">
+                <option value="ยังไม่ตรวจสอบ">ยังไม่ตรวจสอบ</option>
+                <option value="ข่าวจริง">ข่าวจริง</option>
+                <option value="ข่าวเท็จ">ข่าวเท็จ</option>
+            </select>
+            <button onclick="updateNewsStatus()">บันทึกสถานะ</button>
+        </div>
+
+        <div class="card">
+            <h2>รายงานข่าว (Report)</h2>
+            <form id="reportForm" onsubmit="event.preventDefault(); addReport();">
+                <label>นักข่าวผู้รายงาน:</label>
+                <select id="reporterId" required></select>
+
+                <label>เลือกข่าวลือ (รหัสข่าว):</label>
+                <select id="reportNewsId" required></select>
+                
+                <label>วันที่รายงาน:</label>
+                <input type="date" id="reportDate" required>
+                
+                <label>ประเภทรายงาน:</label>
+                <select id="reportType">
+                    <option value="บิดเบือน">บิดเบือน</option>
+                    <option value="ปลุกปั่น">ปลุกปั่น</option>
+                    <option value="ข้อมูลเท็จ">ข้อมูลเท็จ</option>
+                </select>
+                
+                <button type="submit" class="btn-warning">ส่งรายงาน</button>
+            </form>
+        </div>
+        
+        <div class="card full-width">
+            <h2>รายการข่าวทั้งหมด (Reference)</h2>
+            <div id="adminNewsList"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

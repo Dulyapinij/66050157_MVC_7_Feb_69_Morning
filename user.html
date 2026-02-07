@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข่าวสาร (User)</title>
+    <link rel="stylesheet" href="user.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-brand">News Update</div>
+        <div class="nav-menu">
+            <button onclick="showUserSection('allNews')">หน้ารวมข่าว</button>
+            <button onclick="showUserSection('summary')">หน้าสรุปผล</button>
+            <button onclick="logout()" class="btn-logout">ออกจากระบบ</button>
+        </div>
+    </div>
+
+    <div class="content">
+        <div id="section-allNews">
+            <h1>ข่าวทั้งหมด (เรียงตามจำนวนรายงาน)</h1>
+            <div id="newsListContainer" class="news-grid"></div>
+        </div>
+
+        <div id="section-detail" style="display: none;">
+            <button onclick="showUserSection('allNews')" class="btn-back">← กลับไปหน้ารวม</button>
+            <div id="newsDetailContent" class="detail-box"></div>
+        </div>
+
+        <div id="section-summary" style="display: none;">
+            <h1>สรุปสถานการณ์ข่าว</h1>
+            <div class="summary-section panic-zone">
+                <h2>Panic</h2>
+                <div id="summary-panic"></div>
+            </div>
+            <div class="summary-row">
+                <div class="summary-section real-zone">
+                    <h2>ข่าวจริง</h2>
+                    <div id="summary-real"></div>
+                </div>
+                <div class="summary-section fake-zone">
+                    <h2>ข่าวเท็จ</h2>
+                    <div id="summary-fake"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

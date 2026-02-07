@@ -1,0 +1,61 @@
+body {
+    font-family: 'Sarabun', sans-serif;
+    background-color: lightgray;
+    margin: 0;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background: gray;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px black;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+h2 { margin-top: 0; border-bottom: 2px solid lightgray; padding-bottom: 10px; }
+
+label { display: block; margin-top: 10px; font-weight: bold; }
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea { height: 80px; }
+
+button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.btn-warning { background-color: yellow; color: black; }
